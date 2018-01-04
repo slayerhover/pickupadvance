@@ -12,7 +12,7 @@ class Server
     public function __construct() {
         $this->serv = new swoole_server("127.0.0.1", 9501);
         $this->serv->set(array(
-            'worker_num'     	=> self::$count,
+            'worker_num'     	=> self::$count, #开启任务数
             'daemonize'      	=> 1,
             'max_request'     	=> 1000,
             'dispatch_mode'    	=> 3,//进程数据包分配模式 1平均分配，2按FD取摸固定分配，3抢占式分配            

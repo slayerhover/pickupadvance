@@ -53,9 +53,9 @@ final class Pickup{
 	
 	public static function pick($url){
 		$data = self::$ql::get($url, '', self::$option)->rules(self::$rule)
-													   ->query()
-													   ->getData()
-													   ->all();		
+						   ->query()
+						   ->getData()
+						   ->all();		
 		DB::table('cr_pickdata')->insert($data);
 	}
 	public static function randProxy(){
