@@ -11,21 +11,22 @@ php >= 7.0 配置swoole扩展与redis扩展
 
 **执行顺序**
 ```
-执行php tastqueue.php，安排任务队列queue。
-swoole启动分布式任务,每五分钟会执行一次。
-QueryList采集queue队列，将整理好的数据入库
+1. 执行php tastqueue.php，安排任务队列queue。
+2. swoole启动分布式任务,每五分钟会执行一次。
+3. QueryList采集queue队列，将整理好的数据入库
 ```
 
 **爬虫说明**
 ```
-执行失败的任务会进入errorlist队列
-有任务失败，会自动重新检测代理池，移除失效代理。
-依赖库composer.json：
+1. 执行失败的任务会进入errorlist队列
+2. 有任务失败，会自动重新检测代理池，移除失效代理。
+3. 依赖库composer.json：
 {
     "require": {
         "jaeger/querylist": "^4.0",
 		"illuminate/database":"~4.2"
     }
 }
-在Pickup::setRule()方法里写页面采集规则。
+4. Pickup::setRule()方法里写页面采集规则。
+5. Server::$count定义开启的爬虫数量。
 ```
