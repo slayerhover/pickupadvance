@@ -6,7 +6,7 @@ require_once(__DIR__ . '/includes/db.php');
 use QL\QueryList;
 use Illuminate\Database\Capsule\Manager as DB;
 
-$baseuri = 'http://www.taobao.com';
+$baseuri = 'http://www.website.com';
 $url = QueryList::get($baseuri . '/alltargets.jsp')->find('.alphabetic_index_item')->map(function($item){
     return $item->find('a')->map(function($links){ return $links->href; })->all();
 })->all();
