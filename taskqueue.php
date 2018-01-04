@@ -24,8 +24,8 @@ foreach($url as $k1=>$v1){
 		})->all();		
 		foreach($goodsurl as $k3=>$v3){
 			$allgoodsurl[] = $baseuri . $v3['url'];
-			$cache->lpush('pickup_queue', $baseuri . $v3['url']);
-			DB::table('pp_goodslist')->insert(['name'=>$v3['name'], 'url'=>$baseuri . $v3['url']]);
+			$cache->lpush('queue', $baseuri . $v3['url']);
+			DB::table('goodslist')->insert(['name'=>$v3['name'], 'url'=>$baseuri . $v3['url']]);
 		}
 		QueryList::destruct();
 		#usleep(rand(500,3000));

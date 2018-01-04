@@ -29,4 +29,9 @@ php >= 7.0 配置swoole扩展与redis扩展
 }
 4. Pickup::setRule()方法里写页面采集规则。
 5. Server::$count定义开启的爬虫数量。
+6. 随机代理，随机agent
+7. Redis使用到的key定义：
+	queue: 采集任务队列
+	errorlist:任务失败队列
+	proxy:代理池
 ```
