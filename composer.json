@@ -1,0 +1,6 @@
+{
+    "require": {
+        "jaeger/querylist": "^4.0",
+	"illuminate/database":"~4.2"
+    }
+}
