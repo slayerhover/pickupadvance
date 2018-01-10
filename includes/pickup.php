@@ -65,7 +65,8 @@ final class Pickup{
 		if(!$cache->exists('proxy')){
 			self::getProxies($cache);
 		}
-		$cache->srandmember('proxy');
+		$proxy = explode('://', $cache->srandmember('proxy'));
+		return [$proxy[0]=>'tcp://'.$proxy[1]];
 	}
 	public static function checkProxy(){
 		$cache = new Redis();
@@ -88,14 +89,26 @@ final class Pickup{
 		})->all();
 		
 		for($i=1;$i<=10;$i++){
-			if(stream_socket_client("http://".trim($proxy[$i][1]).":".trim($proxy[$i][2]), $errno, $errstr, 1)){
+			if(stream_socket_client(trim($proxy[$i][1]).":".trim($proxy[$i][2]), $errno, $errstr, 1)){
 				$cache->sadd('proxy', 'http://'.trim($proxy[$i][1]).':'.trim($proxy[$i][2]));
 			}
 		}
 	}
+	public static function getProxies1($cache) {
+		$baseuri = 'http://www.xicidaili.com/nn/';
+		$proxy = QueryList::get($baseuri)->find('table#ip_list tr')->map(function($tr){
+			return $tr->find('td')->texts();
+		})->all();
+		print_r($proxy);
+		
+		for($i=1;$i<=50;$i++){
+			if(@stream_socket_client(trim($proxy[$i][1]).":".trim($proxy[$i][2]), $errno, $errstr, 1)){
+				$cache->sadd('proxy', strtolower($proxy[$i][5]).'://'.trim($proxy[$i][1]).':'.trim($proxy[$i][2]));
+			}
+		}
+	}
 	
-	public static function randUserAgent($type = 'pc')
-    {
+	public static function randUserAgent($type = 'pc'){
         switch ($type) {
             case 'pc':
                 return self::$userAgentArray['pc'][array_rand(self::$userAgentArray['pc'])] . rand(0, 10000);
