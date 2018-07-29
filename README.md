@@ -12,7 +12,7 @@ php >= 7.0 配置swoole扩展与redis扩展
 **执行顺序**
 ```
 1. 执行php tastqueue.php，安排任务队列queue。
-2. swoole启动分布式任务,自定义启动进程数。
+2. swoole启动分布式任务,每五分钟会执行一次。
 3. QueryList采集queue队列，将整理好的数据入库
 ```
 

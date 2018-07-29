@@ -9,9 +9,9 @@ $dbconfig = [
   'write'	  => [	
 				 'host'      => '127.0.0.1',
 				],
-  'database'  => 'db',
-  'username'  => 'db',
-  'password'  => '123456',
+  'database'  => 'pickup',
+  'username'  => 'zy52cn',
+  'password'  => 'asdfasdf',
   'port'	  => '3306',
   'charset'   => 'utf8',
   'collation' => 'utf8_general_ci',

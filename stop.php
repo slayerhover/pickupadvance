@@ -1,4 +1,5 @@
 <?php
+header('content-type:text/html;charset=utf-8');
 try{
 	$client = new swoole_client(SWOOLE_SOCK_TCP);
 	if (!$client->connect('127.0.0.1', 9501, -1))
