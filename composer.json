@@ -1,8 +1,8 @@
 {
     "require": {
         "jaeger/querylist": "^4.0",
-	"illuminate/database":"~4.2",
-	"jaeger/querylist-phantomjs":"*",
+		"illuminate/database":"~4.2",
+		"jaeger/querylist-phantomjs":"*",
         "overtrue/pinyin": "~3.0"
     }
 }

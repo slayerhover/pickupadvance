@@ -61,13 +61,13 @@ final class Pickup{
 				$loupanId = $loupanId[0];
 				Server::Log("[loupan]:".$loupanId);				
 				
-                $itemid= self::pickHome("http://www.mizhai.com/info/".$loupanId.".html");
+                $itemid= self::pickHome("http://www.abbc.com/info/".$loupanId.".html");
 				usleep(rand(1000,2000));
                 self::pickThumbAndMaps($url, $itemid);                
 				usleep(rand(1000,2000));
-                self::pickImages("http://www.mizhai.com/photos/".$loupanId.".html", $itemid);
+                self::pickImages("http://www.abbc.com/photos/".$loupanId.".html", $itemid);
 				usleep(rand(1000,2000));
-                self::pickHuxing("http://www.mizhai.com/huxing/".$loupanId.".html", $itemid);
+                self::pickHuxing("http://www.abbc.com/huxing/".$loupanId.".html", $itemid);
 				usleep(rand(2000,4000));
 		} catch (\Exception $e ) {
 				Server::Log("[code]:" . $e->getCode()." [message]:" . $e->getMessage()."\n");
